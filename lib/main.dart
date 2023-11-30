@@ -50,7 +50,7 @@ class MeuApp extends StatelessWidget {
                 shape: const Border(
                     bottom: BorderSide(
                         color: Color.fromARGB(255, 0, 0, 0), width: 1)),
-                trailing: const Icon(Icons.person_pin),
+                trailing: const Icon(Icons.person_pin), 
                 onTap: () {
                   // Update the state of the app.
                   // ...
