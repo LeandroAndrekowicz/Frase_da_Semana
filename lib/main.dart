@@ -1,11 +1,16 @@
+// ignore_for_file: unused_import, unnecessary_new, sort_child_properties_last
+
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:footer/footer.dart';
+import 'package:footer/footer_view.dart';
 
 void main() {
-  runApp(meuApp());
+  runApp(MeuApp());
 }
 
-class meuApp extends StatelessWidget {
+// ignore: camel_case_types, use_key_in_widget_constructors
+class MeuApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -31,8 +36,6 @@ class meuApp extends StatelessWidget {
                 title: const Text('Sugerir frase'),
                 trailing: const Icon(Icons.add),
                 onTap: () {
-                  // Update the state of the app.
-                  // ...
                 },
               ),
               ListTile(
@@ -73,10 +76,18 @@ class meuApp extends StatelessWidget {
           title: const Text('Frase da semana'),
           centerTitle: true,
         ),
-        body: Column(
+        body:  Column(
           children: [
-            const frases(),
-            comentarios(),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Inicio()
+                  ],
+                ),
+              ),
+            ),
+            const Rodape(), // Rodape fixo na parte inferior da tela
           ],
         ),
       ),
@@ -85,14 +96,13 @@ class meuApp extends StatelessWidget {
 }
 
 // ignore: camel_case_types
-class frases extends StatelessWidget {
-  const frases({super.key});
+class Frases extends StatelessWidget {
+  const Frases({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: 450,
       decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.circular(10)),
           border: Border.all(
@@ -197,7 +207,8 @@ class frases extends StatelessWidget {
                         color: Colors.green,
                       ),
                     ],
-                  ))
+                  )),
+                  const SizedBox(height: 16.0), 
             ],
           ),
         ),
@@ -206,12 +217,14 @@ class frases extends StatelessWidget {
   }
 }
 
-class comentarios extends StatelessWidget {
+// ignore: camel_case_types
+class Comentarios extends StatelessWidget {
+  const Comentarios({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: 450,
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.all(Radius.circular(10)),
         border: Border.all(
@@ -237,7 +250,8 @@ class comentarios extends StatelessWidget {
                   Text(
                     'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like',
                     textAlign: TextAlign.justify,
-                  )
+                  ),
+                  SizedBox(height: 16.0),
                 ],
               ),
             ),
@@ -253,7 +267,87 @@ class comentarios extends StatelessWidget {
             ),
           ],
         ),
+        
       ),
+    );
+  }
+}
+
+// ignore: camel_case_types, use_key_in_widget_constructors
+class Inicio extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      children: [
+        Frases(),
+        SizedBox(height: 16.0),
+        Comentarios(),
+      ],
+    );
+  }
+}
+
+class Rodape extends StatelessWidget {
+  const Rodape({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Container(
+        constraints: const BoxConstraints.expand(height: 50),
+        child: Stack(
+          children: [
+            Container(
+              color: Colors.green,
+              padding: const EdgeInsets.all(10.0),
+            ),
+            const Positioned(
+              left: 45,
+              bottom: 10, // Ajuste a posição vertical do ícone
+              child: Home(),
+            ),
+            const Positioned(
+              right: 45,
+              bottom: 10, // Ajuste a posição vertical do ícone
+              child: List(),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class Home extends StatelessWidget {
+  const Home({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 50,
+      height: 50,
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        shape: BoxShape.circle,
+      ),
+      child: const Icon(Icons.house_sharp, color: Colors.green),
+    );
+  }
+}
+
+class List extends StatelessWidget {
+  const List({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 50,
+      height: 50,
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        shape: BoxShape.circle,
+      ),
+      child: const Icon(Icons.list, color: Colors.green),
     );
   }
 }
