@@ -44,7 +44,7 @@ class Roda extends StatelessWidget {
               child: IconButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const FormSugerirFrase(),
+                  builder: (context) => FormSugerirFrase(),
                   ));
                 },
                 icon: const Icon(Icons.add_circle_outlined, color: Colors.green, size: 35,),
