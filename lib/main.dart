@@ -103,14 +103,11 @@ class MeuApp extends StatelessWidget {
         ),
         body: Column(
           children: [
-<<<<<<< Updated upstream
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
                   children: [Inicio()],
-=======
-            const frases(),
-            comentarios(),
+                )
           ],
         ),
       ),
@@ -195,10 +192,11 @@ class frases extends StatelessWidget {
                   'Por: João Ricardo Olinquevicz.',
                   textAlign: TextAlign.right,
                   style: TextStyle(fontSize: 10),
->>>>>>> Stashed changes
+
+                  ),
                 ),
               ),
-            ),
+            
             const Rodape(), // Rodape fixo na parte inferior da tela
           ],
         ),
@@ -211,14 +209,6 @@ class frases extends StatelessWidget {
 class Inicio extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-<<<<<<< Updated upstream
-    return const Column(
-      children: [
-        Frases(),
-        SizedBox(height: 16.0),
-        Comentarios(),
-      ],
-=======
     return Container(
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
@@ -263,7 +253,6 @@ class Inicio extends StatelessWidget {
           ],
         ),
       ),
->>>>>>> Stashed changes
     );
   }
 }
